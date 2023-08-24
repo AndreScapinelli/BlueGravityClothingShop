@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ShopByContact : MonoBehaviour
+public class Shop : MonoBehaviour
 {
     public SpriteRenderer sellingObject;
     public OutfitAddonObject avaiableAddon;
@@ -22,7 +22,7 @@ public class ShopByContact : MonoBehaviour
         {
             Debug.Log("player collided with the box");
 
-            collision.gameObject.GetOrAddComponent<Character>().outfit.SetupOutfit(avaiableAddon);
+            //collision.gameObject.GetOrAddComponent<Character>().outfit.SetupOutfit(avaiableAddon);
         }
     }
 

@@ -12,6 +12,7 @@ public static class GameBase
         Pelvis = 3,
         Boots = 4
     }
+
     [System.Serializable]
     public class CharacterOutfit
     {
@@ -37,21 +38,37 @@ public static class GameBase
         }
         [Header(" Art Ref: Torso, Arms ")]
         public SpriteRenderer torsoSprite;
+        public SpriteRenderer leftShoulder;
+        public SpriteRenderer rightShoulder;
+
+        public SpriteRenderer leftElbow;
+        public SpriteRenderer rightElbow;
+
+        public SpriteRenderer leftHand;
+        public SpriteRenderer rightHand;
         [SerializeField]
-        private OutfitAddonObject Torso;
-        public OutfitAddonObject torso
+        private OutfitAddonArmor Armour;
+        public OutfitAddonArmor armour
         {
-            get { return Torso; }
+            get { return Armour; }
             set
             {
                 if (value.partType == GameBase.OUTFITPART_TYPE.Torso)
                 {
-                    Torso = value;
-                    torsoSprite.sprite = Torso.sprite;
+                    Armour = value;
+
+                    torsoSprite.sprite = Armour.sprite;
+                    leftShoulder.sprite = Armour.leftShoulder;
+                    rightShoulder.sprite= Armour.rightShoulder;
+                    leftElbow.sprite = Armour.leftElbow;
+                    rightElbow.sprite= Armour.rightElbow;
+                    leftHand.sprite = Armour.leftHand;
+                    rightHand.sprite = Armour.rightHand;
+
                 }
                 else
                 {
-                    Debug.Log($"ALERT: {value.partType.ToString()} ON TORSO");
+                    Debug.Log($"ALERT: {value.partType.ToString()} ON ARMOUR");
                 }
             }
         }
@@ -85,7 +102,7 @@ public static class GameBase
                     hood = newOutfit;
                     break;
                 case GameBase.OUTFITPART_TYPE.Torso:
-                    torso = newOutfit;
+                    armour = newOutfit as OutfitAddonArmor;
                     break;
                 case GameBase.OUTFITPART_TYPE.Pelvis:
                     pelvis = newOutfit;
