@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a0f1c06e8d7124586b55890565f12e, type: 3}
+  m_Name: armour 3
+  m_EditorClassIdentifier: 
+  objectName: Full Metal Killer Armour
+  partType: 2
+  description: More metal and less leather.
+  price: 38
+  sprite: {fileID: 21300000, guid: 3d9056df586b6024fbc5b9fee2433eef, type: 3}
+  leftShoulder: {fileID: 21300000, guid: 7c0d0c89b736eb54cac31e27a02a92e5, type: 3}
+  rightShoulder: {fileID: 21300000, guid: 893fc4b41b56e07479a71d811eee4b4e, type: 3}
+  leftElbow: {fileID: 21300000, guid: 82356071de2f4a942b6c0eb7db5dbc94, type: 3}
+  rightElbow: {fileID: 21300000, guid: c8246436787abd045a65c5d246ef4344, type: 3}
+  leftHand: {fileID: 21300000, guid: fde91a030e5382647a20ec036c8d578f, type: 3}
+  rightHand: {fileID: 21300000, guid: c764210032bc5df46a28cb6e1f3ad991, type: 3}
