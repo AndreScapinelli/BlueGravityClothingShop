@@ -121,7 +121,13 @@ MonoBehaviour:
     hoodSprite: {fileID: 8939786996672474552}
     Hood: {fileID: 11400000, guid: 677c83ed032468742badbe853d347d71, type: 2}
     torsoSprite: {fileID: 8939787002131821324}
-    Torso: {fileID: 11400000, guid: f55683b957ab1654784f7ef8ecae084e, type: 2}
+    leftShoulder: {fileID: 8939786997072780806}
+    rightShoulder: {fileID: 8939786996976073916}
+    leftElbow: {fileID: 8939786996798972258}
+    rightElbow: {fileID: 8939786995429701316}
+    leftHand: {fileID: 8939786995816949744}
+    rightHand: {fileID: 8939786997012919166}
+    Armour: {fileID: 0}
     pelvisSprite: {fileID: 8939786994805471970}
     Pelvis: {fileID: 11400000, guid: 36f81b2483f7b5b48b76b9ddc2113d2e, type: 2}
 --- !u!114 &720412896
