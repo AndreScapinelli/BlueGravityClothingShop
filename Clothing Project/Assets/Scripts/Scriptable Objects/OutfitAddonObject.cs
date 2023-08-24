@@ -10,4 +10,6 @@ public class OutfitAddonObject : ScriptableObject
     public string description;
     public int price;
     public Sprite sprite;
+    public int healthBonus;
+    public int staminaBonus;
 }

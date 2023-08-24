@@ -37,4 +37,14 @@ public class GamePlayUI : MonoBehaviour
             onPlayerStatusChanged(player);
         }
     }
+
+    public delegate void UIPlayerOpenShop(PlayerCharacter player, OutfitAddonObject addon, Shop shop);
+    public static event UIPlayerOpenShop onOpenShop;
+    public static void CallOpenShop(PlayerCharacter player, OutfitAddonObject addon, Shop shop)
+    {
+        if (onOpenShop != null) 
+        {
+            onOpenShop(player, addon, shop);
+        }
+    }
 }
