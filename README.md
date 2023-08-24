@@ -15,9 +15,9 @@ TO DO LIST:
 
 - Design a suitable UI:
 	- player status: 
-		- health points: to do
-		- stamina points: to do
-		- money: to do
+		- health points: done
+		- stamina points: done
+		- money: done
 	- Shop UI:
 		- Buy Addon Popup: to do
 	- Change Outfit UI:

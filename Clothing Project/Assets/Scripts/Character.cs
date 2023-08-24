@@ -1,26 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    [Header("Unity Ref")]
     public Animator animator;
     public Rigidbody2D rigidbody2d;
+    [Header("Character Main Variables")]
     [SerializeField]
     private float speed;
     [SerializeField]
     private float runSpeedMultiplier = 1.5f;
+    public float maxStamina = 100f;
     [SerializeField]
-    private float maxStamina = 100f;
-    [SerializeField]
-    private float currentStamina;
+    protected float Stamina;
+    public virtual float stamina
+    {
+        get { return Stamina; }
+        set 
+        {
+            if (value <= 0) value = 0;
+
+            Stamina = value; 
+        }
+    }
     [SerializeField]
     private bool isRunning;
     [SerializeField]
     private int Health;
-    [SerializeField]
-    private int MaxHealth = 3;
-    public int health
+    public int MaxHealth = 3;
+    public virtual int health
     {
         get { return Health; }
         set 
@@ -37,7 +48,7 @@ public class Character : MonoBehaviour
     }
     [SerializeField]
     private int GoldCoin;
-    public int goldCoin
+    public virtual int goldCoin
     {
         get { return GoldCoin; }
         set 
@@ -73,7 +84,7 @@ public class Character : MonoBehaviour
     }
     private bool CanRun()
     {
-        return currentStamina > 0;
+        return stamina > 0;
     }
 
     private void Run(Vector2 direction)
@@ -81,7 +92,7 @@ public class Character : MonoBehaviour
         Vector2 velocity = direction * speed * runSpeedMultiplier;
         rigidbody2d.velocity = velocity;
 
-        currentStamina -= Time.deltaTime;
+        stamina -= Time.deltaTime;
 
         animator.SetFloat("Speed", direction.magnitude);
         isRunning = true;
@@ -96,9 +107,9 @@ public class Character : MonoBehaviour
         animator.SetBool("Running", isRunning);
 
         animator.SetFloat("Speed", direction.magnitude);
-        if (currentStamina < maxStamina)
+        if (stamina < maxStamina)
         {
-            currentStamina += Time.deltaTime;
+            stamina += Time.deltaTime;
         }
     }
 }
