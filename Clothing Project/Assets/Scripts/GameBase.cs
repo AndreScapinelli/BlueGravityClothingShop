@@ -12,6 +12,7 @@ public static class GameBase
         Pelvis = 3,
         Boots = 4
     }
+
     [System.Serializable]
     public class CharacterOutfit
     {
