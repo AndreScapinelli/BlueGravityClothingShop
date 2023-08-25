@@ -10,8 +10,8 @@ TO DO LIST:
 	- walk: done
 	- run (using stamina): done
 	- idle: done
-	- attack: to do
-	- die: to do
+	- attack: done
+	- die: done
 
 - Design a suitable UI:
 	- player status: 
@@ -20,18 +20,15 @@ TO DO LIST:
 		- money: done
 	- Shop UI:
 		- Buy Addon Popup: done
-	- Change Outfit UI: - maybe will be done
-		- An interface that allows the user to change his current outfit, based on his addon invetory.
-
 
 - Scenarios:
-	- shop: to do
-	- exploration area: to do
+	- shop: done
+	- exploration area: done
 
 - Enemy:
 	- using State Machine:
 		- walk: done
 		- idle: done
-		- attack: to do
-		- die: to do
-		- drop money: to do
+		- attack: done
+		- die: done
+		- drop money: done
