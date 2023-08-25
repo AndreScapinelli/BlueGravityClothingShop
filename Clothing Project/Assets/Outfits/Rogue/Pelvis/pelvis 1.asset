@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f7494979611da469289c072717ea3b, type: 3}
   m_Name: pelvis 1
   m_EditorClassIdentifier: 
-  objectName: 
+  objectName: Leather Legs
   partType: 3
-  description: 
-  price: 0
+  description: Protect your pelvis with Leather!
+  price: 15
   sprite: {fileID: 21300000, guid: c376d5b80d02ffe4ba89fd03d60ec471, type: 3}
-  healthBonus: 0
-  staminaBonus: 0
+  healthBonus: 5
+  staminaBonus: 5

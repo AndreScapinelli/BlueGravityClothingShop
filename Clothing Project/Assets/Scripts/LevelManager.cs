@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     }
     private void OnDisable()
     {
-        
+        GamePlayUI.onTeleportNewArea -= GamePlayUI_onTeleportNewArea;
     }
     private IEnumerator FadeCoroutine(Transform output, Transform obj)
     {

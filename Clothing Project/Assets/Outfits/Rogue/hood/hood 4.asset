@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f7494979611da469289c072717ea3b, type: 3}
   m_Name: hood 4
   m_EditorClassIdentifier: 
-  objectName: 
+  objectName: Monster Assassin Hood
   partType: 1
-  description: 
-  price: 0
+  description: The best hood ever made!
+  price: 200
   sprite: {fileID: 21300000, guid: 20eb058aea3c3a744bb5d47a1610550a, type: 3}
+  healthBonus: 100
+  staminaBonus: 80

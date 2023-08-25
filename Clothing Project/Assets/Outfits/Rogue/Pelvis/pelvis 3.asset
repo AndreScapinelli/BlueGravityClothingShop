@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f7494979611da469289c072717ea3b, type: 3}
   m_Name: pelvis 3
   m_EditorClassIdentifier: 
-  objectName: 
+  objectName: Cotton Legs
   partType: 3
-  description: 
-  price: 0
+  description: Light. Extra Stamina for you!
+  price: 25
   sprite: {fileID: 21300000, guid: f5e38fc0746afdb408f3af29c6c737cc, type: 3}
-  healthBonus: 0
-  staminaBonus: 0
+  healthBonus: 5
+  staminaBonus: 20

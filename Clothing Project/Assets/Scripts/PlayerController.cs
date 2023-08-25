@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
             Vector2 movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             character.Move(movementInput.normalized, Input.GetKey(KeyCode.LeftShift));
 
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 character.Attack();
             }

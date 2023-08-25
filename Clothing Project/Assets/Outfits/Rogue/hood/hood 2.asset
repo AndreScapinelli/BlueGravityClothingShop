@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f7494979611da469289c072717ea3b, type: 3}
   m_Name: hood 2
   m_EditorClassIdentifier: 
-  objectName: 
+  objectName: Blue Hood
   partType: 1
-  description: 
-  price: 0
+  description: Not green, but blue!
+  price: 10
   sprite: {fileID: 21300000, guid: ae2d3e3bacfacde4981510b116293dba, type: 3}
+  healthBonus: 1
+  staminaBonus: 2
