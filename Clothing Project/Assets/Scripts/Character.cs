@@ -1,43 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    [Header("Unity Ref")]
     public Animator animator;
     public Rigidbody2D rigidbody2d;
+    [Header("Character Main Variables")]
     [SerializeField]
     private float speed;
     [SerializeField]
     private float runSpeedMultiplier = 1.5f;
-    [SerializeField]
     private float maxStamina = 100f;
+    public float GetMaxStamina()
+    {
+        return maxStamina + (outfit.hood.staminaBonus + outfit.armour.healthBonus + outfit.pelvis.staminaBonus);
+    }
     [SerializeField]
-    private float currentStamina;
+    private float Stamina;
+    public virtual float stamina
+    {
+        get { return Stamina; }
+        set 
+        {
+            if (value <= 0) value = 0;
+
+            Stamina = value; 
+        }
+    }
     [SerializeField]
     private bool isRunning;
     [SerializeField]
     private int Health;
     [SerializeField]
-    private int MaxHealth = 3;
-    public int health
+    private int maxHealth = 3;
+    public int GetMaxHealth()
+    {
+        return maxHealth + (outfit.hood.healthBonus + outfit.armour.healthBonus + outfit.pelvis.healthBonus);
+    }
+    public virtual int health
     {
         get { return Health; }
         set 
         {
             if (value <= 0)
             {
-                health = 0;
+                Health = 0;
             }
-            else if (value >= MaxHealth)
+            else if (value >= maxHealth)
             {
-                health = MaxHealth;
+                Health = GetMaxHealth(); 
+            }
+            else
+            {
+                Health = value;
             }
         }
     }
     [SerializeField]
     private int GoldCoin;
-    public int goldCoin
+    public virtual int goldCoin
     {
         get { return GoldCoin; }
         set 
@@ -46,6 +70,11 @@ public class Character : MonoBehaviour
             {
                 GoldCoin = value;
             }
+            else
+            {
+                GoldCoin = value;
+            }
+            Debug.Log("Current amount of goild coins: " + goldCoin);
         }
     }
 
@@ -73,7 +102,7 @@ public class Character : MonoBehaviour
     }
     private bool CanRun()
     {
-        return currentStamina > 0;
+        return stamina > 0;
     }
 
     private void Run(Vector2 direction)
@@ -81,7 +110,7 @@ public class Character : MonoBehaviour
         Vector2 velocity = direction * speed * runSpeedMultiplier;
         rigidbody2d.velocity = velocity;
 
-        currentStamina -= Time.deltaTime;
+        stamina -= Time.deltaTime;
 
         animator.SetFloat("Speed", direction.magnitude);
         isRunning = true;
@@ -96,9 +125,10 @@ public class Character : MonoBehaviour
         animator.SetBool("Running", isRunning);
 
         animator.SetFloat("Speed", direction.magnitude);
-        if (currentStamina < maxStamina)
+
+        if (stamina < GetMaxStamina())
         {
-            currentStamina += Time.deltaTime;
+            stamina += Time.deltaTime;
         }
     }
 }
