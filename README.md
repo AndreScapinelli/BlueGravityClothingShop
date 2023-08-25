@@ -8,6 +8,8 @@ WebBuild Link: https://andrescapinelli.github.io/BlueGravityWebBuild/
 In Rogue Ascent, step into the shoes of a promising but inexperienced rogue aiming to rise through the ranks of the elusive assassins' guild. To achieve your goal and secure your place among the top assassins, you'll need more than just skill - you'll need style. Venture into a captivating world where dangerous missions and fashionable outfits collide.
 
 TO DO LIST:
+- Outfit Changer:
+	- Create a class to handle diferent addons and outfits: done.
 
 - Player character capable of walking and interacting with the game world.
 	- walk: done
