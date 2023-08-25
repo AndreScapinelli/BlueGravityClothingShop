@@ -9,9 +9,9 @@ public class PlayerCharacter : Character
         get => base.health; 
         set
         {
-            GamePlayUI.CallPlayerStatus(this);
-
             base.health = value;
+
+            GamePlayUI.CallPlayerStatus(this);
         }
     }
     public override float stamina 
@@ -19,9 +19,9 @@ public class PlayerCharacter : Character
         get => base.stamina; 
         set
         {
-            GamePlayUI.CallPlayerStatus(this);
-
             base.stamina = value;
+
+            GamePlayUI.CallPlayerStatus(this);
         }
     }
     public override int goldCoin 
@@ -29,9 +29,13 @@ public class PlayerCharacter : Character
         get => base.goldCoin;
         set 
         {
-            GamePlayUI.CallPlayerStatus(this);
-
             base.goldCoin = value;
+
+            GamePlayUI.CallPlayerStatus(this);
         }
+    }
+    private void Awake()
+    {
+        GamePlayUI.CallPlayerStatus(this);
     }
 }

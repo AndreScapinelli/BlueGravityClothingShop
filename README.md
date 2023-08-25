@@ -19,8 +19,8 @@ TO DO LIST:
 		- stamina points: done
 		- money: done
 	- Shop UI:
-		- Buy Addon Popup: to do
-	- Change Outfit UI:
+		- Buy Addon Popup: done
+	- Change Outfit UI: - maybe will be done
 		- An interface that allows the user to change his current outfit, based on his addon invetory.
 
 

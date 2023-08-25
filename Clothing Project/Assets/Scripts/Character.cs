@@ -13,9 +13,13 @@ public class Character : MonoBehaviour
     private float speed;
     [SerializeField]
     private float runSpeedMultiplier = 1.5f;
-    public float maxStamina = 100f;
+    private float maxStamina = 100f;
+    public float GetMaxStamina()
+    {
+        return maxStamina + (outfit.hood.staminaBonus + outfit.armour.healthBonus + outfit.pelvis.staminaBonus);
+    }
     [SerializeField]
-    protected float Stamina;
+    private float Stamina;
     public virtual float stamina
     {
         get { return Stamina; }
@@ -30,7 +34,12 @@ public class Character : MonoBehaviour
     private bool isRunning;
     [SerializeField]
     private int Health;
-    public int MaxHealth = 3;
+    [SerializeField]
+    private int maxHealth = 3;
+    public int GetMaxHealth()
+    {
+        return maxHealth + (outfit.hood.healthBonus + outfit.armour.healthBonus + outfit.pelvis.healthBonus);
+    }
     public virtual int health
     {
         get { return Health; }
@@ -38,11 +47,15 @@ public class Character : MonoBehaviour
         {
             if (value <= 0)
             {
-                health = 0;
+                Health = 0;
             }
-            else if (value >= MaxHealth)
+            else if (value >= maxHealth)
             {
-                health = MaxHealth;
+                Health = GetMaxHealth(); 
+            }
+            else
+            {
+                Health = value;
             }
         }
     }
@@ -57,6 +70,11 @@ public class Character : MonoBehaviour
             {
                 GoldCoin = value;
             }
+            else
+            {
+                GoldCoin = value;
+            }
+            Debug.Log("Current amount of goild coins: " + goldCoin);
         }
     }
 
@@ -107,7 +125,8 @@ public class Character : MonoBehaviour
         animator.SetBool("Running", isRunning);
 
         animator.SetFloat("Speed", direction.magnitude);
-        if (stamina < maxStamina)
+
+        if (stamina < GetMaxStamina())
         {
             stamina += Time.deltaTime;
         }

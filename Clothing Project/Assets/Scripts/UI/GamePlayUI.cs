@@ -22,8 +22,8 @@ public class GamePlayUI : MonoBehaviour
 
     private void SetupPlayerUI(PlayerCharacter player)
     {
-        lifeBar.fillAmount = player.health / player.MaxHealth;
-        staminaBar.fillAmount = player.stamina / player.maxStamina;
+        lifeBar.fillAmount = player.health / player.GetMaxHealth();
+        staminaBar.fillAmount = player.stamina / player.GetMaxStamina();
         coinCounter.SetText(player.goldCoin.ToString());
     }
 
@@ -38,13 +38,13 @@ public class GamePlayUI : MonoBehaviour
         }
     }
 
-    public delegate void UIPlayerOpenShop(PlayerCharacter player, OutfitAddonObject addon, Shop shop);
+    public delegate void UIPlayerOpenShop(PlayerCharacter player, Shop shop);
     public static event UIPlayerOpenShop onOpenShop;
-    public static void CallOpenShop(PlayerCharacter player, OutfitAddonObject addon, Shop shop)
+    public static void CallOpenShop(PlayerCharacter player,  Shop shop)
     {
         if (onOpenShop != null) 
         {
-            onOpenShop(player, addon, shop);
+            onOpenShop(player, shop);
         }
     }
 }

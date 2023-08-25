@@ -16,9 +16,8 @@ public class Shop : MonoBehaviour
         set 
         {
             IsSold = value;
-
-            if(!value) sellingObject.gameObject.SetActive(false);
-            else sellingObject.gameObject.SetActive(true);
+            sellingObject.gameObject.SetActive(!IsSold);
+            Debug.Log("is sold: " + IsSold);
         }
     }
 
@@ -28,6 +27,8 @@ public class Shop : MonoBehaviour
         {
             sellingObject.sprite = avaiableAddon.sprite;
         }
+
+        gameObject.name = avaiableAddon.objectName;
     }
 
 
@@ -36,7 +37,7 @@ public class Shop : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !isSold)
         {
             ShopUI.Instance.OpenUI();
-            GamePlayUI.CallOpenShop(collision.gameObject.GetComponent<PlayerCharacter>(), avaiableAddon,this);
+            GamePlayUI.CallOpenShop(collision.gameObject.GetComponent<PlayerCharacter>(),this);
         }
     }
 

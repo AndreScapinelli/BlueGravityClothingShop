@@ -25,6 +25,8 @@ public static class GameBase
             get { return Hood; }
             set
             {
+                Debug.Log("Set hood was called");
+
                 if (value.partType == GameBase.OUTFITPART_TYPE.Hood)
                 {
                     Hood = value;
@@ -55,6 +57,8 @@ public static class GameBase
             {
                 if (value.partType == GameBase.OUTFITPART_TYPE.Torso)
                 {
+                    Debug.Log("Set armour was called");
+
                     Armour = value;
 
                     torsoSprite.sprite = Armour.sprite;
@@ -81,6 +85,8 @@ public static class GameBase
             get { return Pelvis; }
             set
             {
+                Debug.Log("Set pelvis was called");
+
                 if (value.partType == GameBase.OUTFITPART_TYPE.Pelvis)
                 {
                     Pelvis = value;
@@ -94,6 +100,8 @@ public static class GameBase
         }
         public void SetupOutfit(OutfitAddonObject newOutfit)
         {
+            Debug.Log("Player recived a new outfit" + newOutfit.partType);
+
             switch (newOutfit.partType)
             {
                 case GameBase.OUTFITPART_TYPE.None:

@@ -16,8 +16,6 @@ public class ShopUI : MonoBehaviour
     public CanvasGroup canvas;
     public PlayerCharacter character;
     public Shop currentShop;
-    [Header("Current Addon")]
-    public OutfitAddonObject addon;
     [Header("UI GameObjects")]
     public TMP_Text title;
     public Image torsoSprite, hoodSprite, legSprite;
@@ -26,14 +24,10 @@ public class ShopUI : MonoBehaviour
     public TMP_Text staminaStatus;
     public TMP_Text price;
     public Button buyButton;
-
-
-
     private void OnEnable()
     {
         GamePlayUI.onOpenShop += GamePlayUI_onOpenShop;
     }
-
     private void Awake()
     {
         if (_instance == null)
@@ -45,17 +39,16 @@ public class ShopUI : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private void GamePlayUI_onOpenShop(PlayerCharacter player, OutfitAddonObject addon, Shop shop)
+    private void GamePlayUI_onOpenShop(PlayerCharacter player, Shop shop)
     {
         currentShop = shop;
         character = player;
 
-        switch (addon.partType)
+        switch (currentShop.avaiableAddon.partType)
         {
             case GameBase.OUTFITPART_TYPE.Hood:
                 torsoSprite.sprite = null;
-                hoodSprite.sprite = addon.sprite;
+                hoodSprite.sprite = currentShop.avaiableAddon.sprite;
                 legSprite.sprite = null;
 
                 torsoSprite.gameObject.SetActive(false);
@@ -63,7 +56,7 @@ public class ShopUI : MonoBehaviour
                 legSprite.gameObject.SetActive(false);
                 break;
             case GameBase.OUTFITPART_TYPE.Torso:
-                torsoSprite.sprite = addon.sprite;
+                torsoSprite.sprite = currentShop.avaiableAddon.sprite;
                 hoodSprite.sprite =null;
                 legSprite.sprite = null;
 
@@ -74,7 +67,7 @@ public class ShopUI : MonoBehaviour
             case GameBase.OUTFITPART_TYPE.Pelvis:
                 torsoSprite.sprite = null;
                 hoodSprite.sprite = null;
-                legSprite.sprite = addon.sprite;
+                legSprite.sprite = currentShop.avaiableAddon.sprite;
 
                 torsoSprite.gameObject.SetActive(false);
                 hoodSprite.gameObject.SetActive(false);
@@ -91,16 +84,16 @@ public class ShopUI : MonoBehaviour
                 break;
         }
 
-        title.SetText(addon.objectName);
+        title.SetText(currentShop.avaiableAddon.objectName);
 
-        description.SetText(addon.description);
+        description.SetText(currentShop.avaiableAddon.description);
 
-        healthStatus.SetText("+"+ addon.healthBonus);
-        staminaStatus.SetText("+" + addon.staminaBonus);
+        healthStatus.SetText("+"+ currentShop.avaiableAddon.healthBonus);
+        staminaStatus.SetText("+" + currentShop.avaiableAddon.staminaBonus);
 
-        price.SetText(addon.price.ToString());
+        price.SetText(currentShop.avaiableAddon.price.ToString());
 
-        buyButton.interactable = character.goldCoin >= addon.price;
+        buyButton.interactable = character.goldCoin >= currentShop.avaiableAddon.price;
     }
 
     public void OpenUI()
@@ -118,10 +111,10 @@ public class ShopUI : MonoBehaviour
     }
     public void UI_Click_Buy()
     {
-        if (character.goldCoin >= addon.price)
+        if (character.goldCoin >= currentShop.avaiableAddon.price)
         {
-            character.goldCoin -= addon.price;
-            character.outfit.SetupOutfit(addon);
+            character.goldCoin -= currentShop.avaiableAddon.price;
+            character.outfit.SetupOutfit(currentShop.avaiableAddon);
             currentShop.isSold = true;
             CloseUI();
         }

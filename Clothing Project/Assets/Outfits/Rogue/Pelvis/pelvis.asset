@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: pelvis
   m_EditorClassIdentifier: 
   objectName: 
-  partType: 0
+  partType: 3
   description: 
   price: 0
   sprite: {fileID: 21300000, guid: 27fe921d9d4bdb24eb91cc1e96a04f02, type: 3}
+  healthBonus: 0
+  staminaBonus: 0
