@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCharacter : Character
 {
-    public override int health 
+    public override float health 
     { 
         get => base.health; 
         set
@@ -36,6 +36,9 @@ public class PlayerCharacter : Character
     }
     private void Awake()
     {
+        health = GetMaxHealth();
+        stamina = GetMaxStamina();
+
         GamePlayUI.CallPlayerStatus(this);
     }
 }

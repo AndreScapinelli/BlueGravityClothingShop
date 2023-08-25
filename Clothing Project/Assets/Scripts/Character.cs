@@ -13,10 +13,14 @@ public class Character : MonoBehaviour
     private float speed;
     [SerializeField]
     private float runSpeedMultiplier = 1.5f;
+    [SerializeField]
+    private float baseStamina = 15;
+    [SerializeField]
     private float maxStamina = 100f;
     public float GetMaxStamina()
     {
-        return maxStamina + (outfit.hood.staminaBonus + outfit.armour.healthBonus + outfit.pelvis.staminaBonus);
+        maxStamina = baseStamina + +(outfit.hood.staminaBonus + outfit.armour.healthBonus + outfit.pelvis.staminaBonus);
+        return maxStamina;
     }
     [SerializeField]
     private float Stamina;
@@ -33,14 +37,17 @@ public class Character : MonoBehaviour
     [SerializeField]
     private bool isRunning;
     [SerializeField]
-    private int Health;
+    private float Health;
     [SerializeField]
-    private int maxHealth = 3;
-    public int GetMaxHealth()
+    private int baseMaxHealth = 3;
+    [SerializeField]
+    private float maxHealth = 3;
+    public float GetMaxHealth()
     {
-        return maxHealth + (outfit.hood.healthBonus + outfit.armour.healthBonus + outfit.pelvis.healthBonus);
+        maxHealth = baseMaxHealth + (outfit.hood.healthBonus + outfit.armour.healthBonus + outfit.pelvis.healthBonus);
+        return maxHealth;
     }
-    public virtual int health
+    public virtual float health
     {
         get { return Health; }
         set 
@@ -48,6 +55,8 @@ public class Character : MonoBehaviour
             if (value <= 0)
             {
                 Health = 0;
+
+                Die();
             }
             else if (value >= maxHealth)
             {
@@ -130,5 +139,15 @@ public class Character : MonoBehaviour
         {
             stamina += Time.deltaTime;
         }
+    }
+
+    public void Attack()
+    {
+        animator.SetTrigger("Attack");
+    }
+
+    public void Die()
+    {
+        animator.SetTrigger("Die");
     }
 }

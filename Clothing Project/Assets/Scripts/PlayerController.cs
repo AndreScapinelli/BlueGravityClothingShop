@@ -9,7 +9,15 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Vector2 movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        character.Move(movementInput.normalized, Input.GetKey(KeyCode.LeftShift));
+        if (character.health > 0)
+        {
+            Vector2 movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            character.Move(movementInput.normalized, Input.GetKey(KeyCode.LeftShift));
+
+            if (Input.GetMouseButton(0))
+            {
+                character.Attack();
+            }
+        }
     }
 }
