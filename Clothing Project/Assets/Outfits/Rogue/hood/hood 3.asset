@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f7494979611da469289c072717ea3b, type: 3}
   m_Name: hood 3
   m_EditorClassIdentifier: 
-  objectName: 
+  objectName: Gray Hood
   partType: 1
-  description: 
-  price: 0
+  description: Now, its Gray my friend!
+  price: 20
   sprite: {fileID: 21300000, guid: dcb72940063c94f44abc2366768e713a, type: 3}
+  healthBonus: 5
+  staminaBonus: 5

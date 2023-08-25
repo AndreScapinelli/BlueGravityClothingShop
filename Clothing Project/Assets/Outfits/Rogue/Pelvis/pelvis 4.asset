@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f7494979611da469289c072717ea3b, type: 3}
   m_Name: pelvis 4
   m_EditorClassIdentifier: 
-  objectName: 
+  objectName: Monster Assassin Legs
   partType: 3
-  description: 
-  price: 0
+  description: With that you became a Killer!
+  price: 200
   sprite: {fileID: 21300000, guid: b1babcb6ce4ee78478abc5076a6d1b8d, type: 3}
-  healthBonus: 0
-  staminaBonus: 0
+  healthBonus: 100
+  staminaBonus: 80

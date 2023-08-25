@@ -27,11 +27,11 @@ public class Character : MonoBehaviour
     public virtual float stamina
     {
         get { return Stamina; }
-        set 
+        set
         {
             if (value <= 0) value = 0;
 
-            Stamina = value; 
+            Stamina = value;
         }
     }
     [SerializeField]
@@ -50,7 +50,7 @@ public class Character : MonoBehaviour
     public virtual float health
     {
         get { return Health; }
-        set 
+        set
         {
             if (value <= 0)
             {
@@ -60,12 +60,13 @@ public class Character : MonoBehaviour
             }
             else if (value >= maxHealth)
             {
-                Health = GetMaxHealth(); 
+                Health = GetMaxHealth();
             }
             else
             {
                 Health = value;
             }
+            animator.SetFloat("Health", Health);
         }
     }
     [SerializeField]
@@ -73,7 +74,7 @@ public class Character : MonoBehaviour
     public virtual int goldCoin
     {
         get { return GoldCoin; }
-        set 
+        set
         {
             if (value <= 0)
             {
@@ -86,11 +87,19 @@ public class Character : MonoBehaviour
             Debug.Log("Current amount of goild coins: " + goldCoin);
         }
     }
-
     public GameBase.CharacterOutfit outfit;
+
+    [Header("Attack Att")]
+    public Transform attackCircleOrigin;
+    public Vector3 attackCircleOffset = Vector3.zero;
+    public float attackRadius;
 
     public void Move(Vector2 direction, bool wantRun = false)
     {
+        if (health <= 0) return;
+
+        if (IsAttacking) return;
+
         if (CanRun() && wantRun)
         {
             Run(direction);
@@ -141,13 +150,83 @@ public class Character : MonoBehaviour
         }
     }
 
+    private bool attackBlocked = false;
+    public bool IsAttacking { get; private set; }
+
+    public void ResetIsAttacking()
+    {
+        IsAttacking = false;
+        attackBlocked = false;
+
+    }
     public void Attack()
     {
+        rigidbody2d.velocity = new Vector2(0, 0);
+
+        if (attackBlocked) return;
+
+        attackBlocked = true;
         animator.SetTrigger("Attack");
+        IsAttacking = true;
     }
 
     public void Die()
     {
-        animator.SetTrigger("Die");
+        GetComponent<Collider2D>().enabled = false;
+        rigidbody2d.velocity = Vector2.zero;
+    }
+
+    private bool onHit = false;
+    public void ResetOnHit()
+    {
+        onHit = false;
+    }
+    public void GetHit(int amount, GameObject sender)
+    {
+        if (onHit) return;
+
+        if (sender == this.gameObject) return;
+
+        Debug.Log(gameObject.name + "get hi amount: " + amount);
+
+        rigidbody2d.velocity = Vector2.zero;
+
+        onHit = true;
+
+        if (health <= 0)
+        {
+            Die();
+            return;
+        }
+
+        health -= amount;
+
+        if (health > 0)
+        {
+            animator.SetTrigger("Hit");
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Vector3 position = attackCircleOrigin == null ? Vector3.zero: attackCircleOrigin.position + attackCircleOffset;
+        Gizmos.DrawWireSphere(position,attackRadius);
+
+    }
+
+    public void AttackDetectColliders()
+    {
+        foreach (Collider2D collider in Physics2D.OverlapCircleAll(attackCircleOrigin.position,attackRadius))
+        {
+            if (collider.gameObject.tag == "Enemy" && gameObject.tag != "Enemy")
+            {
+                collider.GetComponent<Character>().GetHit(10,this.gameObject);
+            }
+            else if (collider.gameObject.tag == "Player" && gameObject.tag != "Player")
+            {
+                collider.GetComponent<Character>().GetHit(1,this.gameObject);
+            }
+        }
     }
 }

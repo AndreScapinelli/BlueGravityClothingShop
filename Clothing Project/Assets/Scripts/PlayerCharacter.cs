@@ -12,6 +12,9 @@ public class PlayerCharacter : Character
             base.health = value;
 
             GamePlayUI.CallPlayerStatus(this);
+
+            if (health <= 0)
+                Application.LoadLevel(0);
         }
     }
     public override float stamina 

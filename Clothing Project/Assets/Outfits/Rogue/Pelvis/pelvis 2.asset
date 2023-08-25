@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f7494979611da469289c072717ea3b, type: 3}
   m_Name: pelvis 2
   m_EditorClassIdentifier: 
-  objectName: 
+  objectName: Iron Legs
   partType: 3
-  description: 
-  price: 0
+  description: Balls os Steel
+  price: 20
   sprite: {fileID: 21300000, guid: 0c6412d95175c2b40bd9a27f7d1fa096, type: 3}
-  healthBonus: 0
-  staminaBonus: 0
+  healthBonus: 20
+  staminaBonus: 10
